@@ -1,0 +1,30 @@
+openapi: 3.0.3
+info:
+  title: Inventory Service
+  version: 1.0.0
+servers:
+- url: http://localhost:8082
+paths:
+  /api/inventory/{sku-code}:
+    get:
+      operationId: isInStock
+      parameters:
+      - explode: false
+        in: path
+        name: sku-code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: boolean
+          description: OK
+      summary: GET api/inventory/{sku-code}
+      x-accepts: '*/*'
+components:
+  schemas: {}
+
